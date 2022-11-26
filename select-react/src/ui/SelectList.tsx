@@ -16,10 +16,7 @@ export default function SelectList(props: { children: JSX.Element }) {
   );
 
   useEffect(() => {
-    const selectedOption = options.find(
-      (option: any) => option.value === props.children.props.value
-    );
-
+    const selectedOption = options.find((option: any) => option.selected);
     setCurrentSelection(selectedOption?.label);
   }, [props.children.props.value]);
 
@@ -29,7 +26,11 @@ export default function SelectList(props: { children: JSX.Element }) {
 
   function getOptions(options: any[]) {
     const optionValues = options.map((option: any) => {
-      return { value: option.props.value, label: option.props.children };
+      return {
+        value: option.props.value,
+        label: option.props.children,
+        selected: option.props.selected,
+      };
     });
     return optionValues;
   }
@@ -57,19 +58,19 @@ export default function SelectList(props: { children: JSX.Element }) {
 
   return (
     <>
-      <div id="selectList" className="selectList">
-        <span className="select-element" onClick={toggleList}>
+      <div id='selectList' className='selectList'>
+        <span className='select-element' onClick={toggleList}>
           {currentSelection}
         </span>
         <ul
-          className="ul-clear select-container"
+          className='ul-clear select-container'
           id={selectList.props.id + "-list"}
         >
           {options.map((option: any) => {
             return (
               <li
                 id={option.value}
-                className="select-option no-wrap overflow-ellipsis x-no-scroll "
+                className='select-option no-wrap overflow-ellipsis x-no-scroll '
                 key={option.value}
                 onClick={handleChange}
                 data-value={option.value}
