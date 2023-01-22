@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 /**
  *
- * this wraps a select list to customize the look and feel of the select list
+ * this wraps a select element to customize the look and feel of the element
  * the list and options are children of the component and are passed in as props
  * it passes state throught the onChange event of the select element in the parent component
  *
- * @param props - the props for the component
+ * @param props - the props for the component, should be a JSX.HTMLSelectElement with children
  *
- * @returns JSXELMENT - a styled select list
+ * @returns JSX.Element - a styled select list
  */
 export default function SelectList(props: { children: JSX.Element }) {
   const [currentSelection, setCurrentSelection] = useState(
@@ -58,7 +58,7 @@ export default function SelectList(props: { children: JSX.Element }) {
 
   return (
     <>
-      <div id='selectList' className='selectList'>
+      <div id='selectList' className='selectList' tabIndex={0} role="menu">
         <span className='select-element' onClick={toggleList}>
           {currentSelection}
         </span>
@@ -75,6 +75,7 @@ export default function SelectList(props: { children: JSX.Element }) {
                 onClick={handleChange}
                 data-value={option.value}
                 aria-selected={option.label === currentSelection}
+                role="menuitem"
               >
                 {option.label}
               </li>
