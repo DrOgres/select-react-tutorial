@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
  * @returns JSX.Element - a styled select list
  */
 export default function SelectList(props: { children: JSX.Element }) {
+  
   const [currentSelection, setCurrentSelection] = useState(
     props.children.props.value
   );
