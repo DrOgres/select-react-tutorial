@@ -2,138 +2,72 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
-
-
----neutral-1: hsl(30, 2%, 16%);
---neutral-2: hsl(30, 3%, 30%);
---neutral-3: hsl(34, 3%, 50%);
---neutral-4: hsl(36, 3%, 70%);
---neutral-5: hsl(60, 2%, 90%);
-
---greytone-1: hsl(168, 3%, 10%);
---greytone-2: hsl(168, 3%, 30%);
---greytone-3: hsl(168, 3%, 50%);
---greytone-4: hsl(168, 3%, 70%);
---greytone-5: hsl(168, 3%, 92%);
-
---orange-1: hsl(23, 100%, 14%);
---orange-2: hsl(23, 100%, 30%);
---orange-3: hsl(23, 100%, 50%);
---orange-4: hsl(23, 100%, 70%);
---orange-5: hsl(23, 100%, 90%);
-
---hightone-1: hsl(200, 14%, 10%);
---hightone-2: hsl(200, 14%, 30%);
---hightone-3: hsl(200, 14%, 50%);
---hightone-4: hsl(200, 14%, 70%);
---hightone-5: hsl(200, 14%, 96%);
-
---slate-1: hsl(220, 33%, 10%);
---slate-2: hsl(220, 33%, 30%);
---slate-3: hsl(220, 33%, 50%);
---slate-4: hsl(220, 33%, 70%);
---slate-5: hsl(220, 33%, 90%);
-
---red-1: hsl(9, 53%, 10%);
---red-2: hsl(9, 53%, 30%);
---red-3: hsl(9, 53%, 50%);
---red-4: hsl(9, 53%, 70%);
---red-5: hsl(9, 53%, 90%);
-}
-
-.selectList, .select-container, .select-container * {
   box-sizing: border-box;
+
+  --backgorund-color-default: hsl(30, 3%, 30%);
+  --highlight-background-color: hsl(9, 53%, 70%);
+  --selected-background-color: hsl(9, 53%, 50%);
+  --border-color: hsl(200, 14%, 10%);
+  --text-color: hsl(200, 14%, 96%);
 }
 
-
-.selectList{
-    display: block;
-    position: relative;
-    width: 300px;
-   
+.selectlist {
+  position: relative;
+  width: 300px;
 }
 
-.select-element{
-    background-color: var(--red-4);
-    color: var(--red-2);
-    border-radius: 0px;
-    border: 1px solid var(--hightone-1);
-    padding: 0.5rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row; 
-    min-width: 200px;
-    user-select: none;
+.select-element {
+  background-color: var(--selected-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 200px;
+  user-select: none;
 }
 
 /* sty;e the arrow element of our pulldown list*/
-.select-element::after{
-    content: '';
-    display: inline-block;
-    border: 10px solid transparent;
-    border-top-color:  var(--hightone-1);
-    margin-left: 2rem;
-    margin-top: 0.25rem;
-   
+.select-element::after {
+  content: "";
+  border: 10px solid transparent;
+  border-top-color: var(--text-color);
+  margin-top: 0.5rem;
 }
 
-.select-container{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--neutral-3);
-    border-radius: 0px; 
-    border: 1px solid  var(--hightone-1);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    z-index: 1;
-    max-height: 150px;
-    overflow-y: auto;
-    display: none;
+.select-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: var(--backgorund-color-default);
+  cursor: pointer;
+  z-index: 1000;
+  max-height: 150px;
+  overflow-y: auto;
 }
 
 .select-option {
-   
-    background-color: var(--neutral-2);
-    color: var(--hightone-5);
-    border-radius: 0px;
-    box-shadow: 1px 1px var(---neutral-1);
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    padding: 0.5rem .25rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow-x: hidden;
+  padding: 0.5rem 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
 }
-    
-  
-  
-  [aria-selected="true"] {
-      background-color: var(--red-3);
-    }
-  
-  
-    .select-option:hover,
-    .select-option:focus {
-      background-color: var(--red-4);
-    }
-  
-    .select-option:focus {
-      outline: 2px dashed var(--red-4);
-    }
-  
-    ul{
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-  
 
+[aria-selected="true"] {
+  background-color: var(--selected-background-color);
+}
+
+.select-option:hover,
+.select-option:focus {
+  background-color: var(--highlight-background-color);
+}
+
+.selectlist:focus {
+  outline: 2px dashed var(--highlight-background-color);
+}

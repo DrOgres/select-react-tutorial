@@ -81,7 +81,7 @@ export default function SelectList(props: { children: JSX.Element }) {
   return (
     <div
       id='selectList'
-      className='selectList'
+      className='selectlist'
       tabIndex={0}
       role='menu'
       onKeyDown={handleKeyDown}
